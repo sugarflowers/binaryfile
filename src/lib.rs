@@ -1,7 +1,7 @@
 use std::io::prelude::*;
 use std::fs::OpenOptions;
 use std::fs::File;
-use std::io::{self, BufRead, BufReader, Read};
+use std::io::{BufRead, BufReader, Read};
 use anyhow::Result;
 
 pub struct BinaryWriter {
@@ -15,7 +15,7 @@ impl BinaryWriter {
             .write(true)
             .create(true)
             .truncate(true)
-            .open(filename)?;
+            .open(filename);
 
         Ok(
             BinaryWriter {
