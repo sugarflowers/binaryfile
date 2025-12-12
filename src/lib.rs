@@ -15,7 +15,7 @@ impl BinaryWriter {
             .write(true)
             .create(true)
             .truncate(true)
-            .open(filename);
+            .open(filename)?;
 
         Ok(
             BinaryWriter {
