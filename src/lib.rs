@@ -43,7 +43,9 @@ impl BinaryWriter {
 
 }
 
+
 pub struct BinaryReader {
+    pub filename: String,
     pub reader: BufReader<File>,
 }
 
@@ -51,12 +53,12 @@ impl BinaryReader {
     pub fn open(filename: &str) -> Result<Self> {
         let file = File::open(filename)?;
         let reader = BufReader::new(file);
-        Ok(
-            Self {
-                reader
-            }
-        )
+        Ok(Self {
+            filename: filename.to_string(),
+            reader,
+        })
     }
+
     pub fn read(&mut self) -> Result<Vec<u8>> {
         let mut data = Vec::new();
         self.reader.read_to_end(&mut data)?;
